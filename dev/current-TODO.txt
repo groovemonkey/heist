@@ -5,5 +5,7 @@ you were just working on:
 -experts
 -choosing a heist
 -choosing experts
+-aging out experts
 -attempting a heist
 -choices during different heist phases?
+-recon

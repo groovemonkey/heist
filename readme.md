@@ -3,7 +3,7 @@
 A Browser-Based Heist Game of Planning and Deception.
 
 ## Premise
-You're a thief -- you start with small heists like knocking over convenience stores, but soon graduate to jewelry stores,/ bank heists, and art theft.
+You're a thief -- you start with small heists like knocking over convenience stores, but soon graduate to jewelry stores, bank heists, and art theft.
 
 You control the heist in three main stages:
 

@@ -2,10 +2,68 @@ ideas:
 
   -heroism chance for each location (makes mission harder by having heroic customers/shopowners)
 
-  -recon -- each recon attempt is a chance to get busted.
-  -safe houses -- a safe house reduces chance that recon will get busted.
+  -recon -- each recon attempt is a chance to get busted. (or for "heat" to increase?)
+  -safe houses -- a safe house reduces chance that recon will get busted. (reduces "heat"?)
 
   -training for your team (improves their skills in exchange for money)
+
+
+
+###########################################
+heist-obstacles     ---->     expert-skills
+###########################################
+
+
+(depends on heat level) ----> transporter
+
+alarm systems,
+video cameras,
+computer security,  ---->     hacker
+
+laser tripwires     ---->     hacker or acrobat
+
+
+high-security locks,
+light safe,         ---->     lockpicker/safecracker
+locked doors,
+
+
+heavy doors,
+heavy safe,
+armed guards,       ---->     demolition
+lockdown
+
+
+armed response squad,
+swat team,
+police squad unit   ---->     gunfighting/disguises + charm
+armed guards
+
+
+
+##########################
+Categories of response for a location:
+
+alarm
+automated call for help (police, response team)
+immediate armed response
+lockdown
+
+
+##########################
+Post-heist consideration (depends on pre- + post-heist heat, kind of like "Assassin Score" in Hitman Games)
+
+transport
+safe house
+new identities
+frame someone else
+kill your team to tie off loose ends
+
+
+
+
+
+
 
 
 

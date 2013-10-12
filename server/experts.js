@@ -9,18 +9,25 @@ Meteor.publish("all-experts", function() {
 Meteor.startup(function() {
   // delete experts
   Experts.remove({});
-  // delete gameObjects
-  clientGameObjects.remove({});
-  
 
   // insert experts
   if (Experts.find().count() === 0) {
-    Experts.insert({
+    for (var i = 5; i >= 0; i--) {
+      names = generate_name();
+      spec = generate_specialization();
 
+      Experts.insert({
+        firstname: names["firstname"],
+        nickname: names["nickname"],
+        lastname: names["lastname"],
+        sex: names["sex"],
+        specialization: spec["title"],
+        skills: spec["skills"], // this is a hash
 
-    });
+      });
+    }
   }
-});
+}
 
 
 function randomly_select(arr) {
@@ -29,6 +36,8 @@ function randomly_select(arr) {
 }
 
 function generate_name() {
+  // return a hash: {sex: s, firstname: f, lastname: l, nickname: n}
+  var first, nick, last, sex, randysex;
   var firstnames_m = [
     "Steve", "Bob", "Hendrick", "Benton", "Dave", "David", "Shawn", "Sean", "Michael", "Mike", "Robert",
     "Benny", "Benjamin", "Bendrick", "Kenneth", "Ken", "Kendrick", "Morgan", "Fred", "Seamus", "Anil",
@@ -54,10 +63,9 @@ function generate_name() {
     "Henderson", "Coleman", "Hayes"
   ];
 
-  var randysex = Math.floor(Math.random() * 100);
-  var first, nick, last;
+  randysex = Math.floor(Math.random() * 100);
   // all babies start out female
-  var sex = "female";
+  sex = "female";
   first = randomly_select(firstnames_f);
 
   if (randysex > 50) {
