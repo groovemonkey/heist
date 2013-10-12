@@ -1,0 +1,48 @@
+ideas:
+
+  -heroism chance for each location (makes mission harder by having heroic customers/shopowners)
+
+  -recon -- each recon attempt is a chance to get busted.
+  -safe houses -- a safe house reduces chance that recon will get busted.
+
+  -training for your team (improves their skills in exchange for money)
+
+
+
+
+########################
+Client/Server
+########################
+Server holds models for the game
+Client stores gameObject, calculates stuff
+
+
+
+########################
+HEISTS
+########################
+
+There are different locations for a heist. Configuration:
+
+makeNewHeist('heistlocationtype');
+
+// looks up the standard values for that location
+
+// modifies values a bit based on variance
+function randomizeValues(locationObject) {
+  var variance = locationObject.variance;
+
+  // TODO: randomize
+  return locationObject;
+}
+
+
+
+
+########################
+EXPERTS
+########################
+
+
+
+

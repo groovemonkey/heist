@@ -1,0 +1,43 @@
+/* CSS declarations go here */
+body {
+  width: 100%;
+  margin: auto;
+}
+
+#mainpanel {
+  padding-left: 2em;
+  width: 70%;
+  float: left;
+}
+#sidebar {
+  padding: 1em;
+  border-left: 2px solid #8D1673;
+  width: 15%;
+  height: 100%;
+  float: right;
+}
+
+.heistname {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.heist {
+  display: inline-block;
+  width: 12em;
+  border-radius: 5px;
+  border: 1px solid #38A60C;
+  background-color: #99F575;
+  margin-bottom: 2em;
+  margin-right: 1em;
+  padding: .5em .8em;
+}
+
+button.takeTurn {
+  font-size: 2em;
+  border-radius: 0;
+  background-color: #E972CF;
+  border: 1px solid #8D1673;
+  width: 7em;
+  height: 2em;
+}

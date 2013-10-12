@@ -1,0 +1,9 @@
+###
+you were just working on:
+
+-aging out heists
+-experts
+-choosing a heist
+-choosing experts
+-attempting a heist
+-choices during different heist phases?

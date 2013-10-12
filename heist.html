@@ -1,0 +1,86 @@
+<head>
+  <title>heist</title>
+</head>
+
+<body>
+  {{#if currentUser}} 
+    {{> mainScreen}}
+  {{else}}
+    {{loginButtons}}
+    {{> loggedOutTemplate}}
+  {{/if}}
+</body>
+
+
+
+
+<template name="mainScreen">
+<div id="mainpanel">
+  {{loginButtons}}
+  <h1>What's Your Heist?</h1>
+
+  <h2>Heists Available:</h2>
+  <div class="heistlist">
+    {{#each heists_available}}
+      <div class="heist">
+        <span class="heistname">{{name}}</span>
+        <p>Security:</p>
+        <ul>
+          <li>Physical: {{security_physical}}</li>
+          <li>Computer: {{security_computer}}</li>
+          <li>Guards: {{security_guards}}</li>
+          <li>Safe: {{security_safe}}</li>
+        </ul>
+        <button class="select-{{_id}}">Select</button>
+      </div>
+    {{/each}}
+  </div>
+
+  <h2>Experts Available:</h2>
+  <div class="expertlist">
+    {{#each experts_available}}
+
+    {{/each}}
+  </div>
+
+  <button type="button" class="btn takeTurn">Take Turn</button>
+</div> <!-- end #mainpanel div  -->
+
+
+
+
+<div id="sidebar">
+  <h2>This is the sidebar</h2>
+  <p>There will be stats here. Delicious, wonderful, incredible stats. Yes. Stats. You heard me. Punk. You want to try your luck with some stats or should I just pull out my STATS STATS STATS?</p>
+</div> <!-- End sidebar div -->
+</template>
+
+
+
+
+
+<template name="loggedOutTemplate">
+  <h1>Welcome to the Heist.</h1>
+
+  <h3>A Browser-Based Heist Game of Planning and Deception.
+</h3>
+  <p>You're a thief -- you start with small heists like knocking over convenience stores, but soon graduate to jewelry stores,/ bank heists, and art theft.</p>
+
+  <p>You control the heist in three main stages:</p>
+
+  <h2>+1. Recon + Team Selection</h2>
+  <p>Plan what approach to take for the target -- do you go in shooting, or hack into their computers to disable security? Do you use stealth and disguises to talk your way in? Put together a team with exactly the skillsets you need to pull off your heist.</p>
+
+  <h2>+2. The Heist</h2>
+  <p>Your planning and team selection is put to the test. Do you get in and get the money/art/jewelry? Does your team have what it takes to overwhelm the target's defenses? Whether it's a guard at a shopping mall or sophisticated security systems at a museum, your team needs to deal with it and get the loot.</p>
+
+  <h2>+3. The Getaway</h2>
+  <p>Can you get away on foot because no one cares about a mugging, or do you need a Transporter to drive you several hundred miles to escape the FBI's dragnet? The difference between a clean getaway and a bloody, career-ending shootout can be a single team member.</p>
+
+  <h2>+4. (Bonus) Combat</h2>
+  <p>You didn't get away successfully. Now you've got problems. Did you bring a few violent thugs along? Shoot your way out! Did you infiltrate using disguises? Perhaps you can talk your way out. Depending on the heist you just pulled off, you might need to get out of a standoff with a few police officers, or a wild chase with helicopters and a few not-so-easily-persuaded agencies.</p>
+
+  <p>Sign up or log in above:</p>
+
+
+</template>
