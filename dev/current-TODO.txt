@@ -1,8 +1,7 @@
 ###
 you were just working on:
 
--aging out heists
--experts
+-experts -- not a collection on server, just objects created client-side + stored in clientGameObject
 -choosing a heist
 -choosing experts
 -aging out experts

@@ -1,5 +1,6 @@
 // Client Code
 Heists = new Meteor.Collection("heists");
+Experts = new Meteor.Collection("experts");
 clientGameObjects = new Meteor.Collection("clientGameObjects");
 
 Meteor.subscribe("heists");
@@ -13,25 +14,62 @@ function takeTurn(gameObj) {
   var gameObjectID = gameObj["_id"];
   
   // remove heists that have expired
+  for (var h = gameObj["heists_available"].length - 1; h >= 0; h--) {
+    var age = gameObj.turn - gameObj["heists_available"][h].createdTurn;
+    if (gameObj["heists_available"][h]["turns_available"] < age) {
+      gameObj["heists_available"].splice(h,1);
+    }
+  }
+
+
+
 
   // remove experts that have expired
+  for (var e = gameObj["experts_available"].length - 1; e >= 0; h--) {
+    var age = gameObj.turn - gameObj["experts_available"][e].createdTurn;
+    if (gameObj["experts_available"][e]["turns_available"] < age) {
+      gameObj["experts_available"].splice(h,1);
+    }
+  }
+
+
+
 
   // // add new heists
   allAvailableHeists = Heists.find({});
 
   allAvailableHeists.forEach(function(heist) {
     var rand = Math.floor(Math.random() * 100);
-    if (rand > heist.chance) {
+    if (rand < heist.chance) {
+      heist["createdTurn"] = gameObj.turn;
       gameObj.heists_available.push(heist);
     }
   });
   
-  // add new experts
+
+
+  // add new expert (new -- client-side)
+  var exp = generate_expert();
+  exp["createdTurn"] = gameObj.turn;
+  exp["turns_available"] = 3;
+
+  gameObj.experts_available.push(exp);
+
+
+  // ///add new experts (OLD --server-based method)
+  // allAvailableExperts = Experts.find({});
+  // allAvailableExperts.forEach(function(exp) {
+  //   var rand = Math.floor(Math.random() * 100);
+  //   if (rand < exp.chance_of_creation) {
+  //     exp["createdTurn"] = gameObj.turn;
+  //     gameObj.experts_available.push(exp);
+  //   }
+  // });
 
 
 
-
-  // save gameObject
+  // end turn + save gameObject
+  gameObj.turn += 1;
   clientGameObjects.update(gameObj["_id"], gameObj);
 }
 
@@ -47,14 +85,15 @@ function runHeist(gameObj) {
 
 
 Template.mainScreen.cgo = function() {
-  // if none exists, create a new cgo
+  // if none exists, create a new Client Game Object
   if (Session.equals("clientGameObject", false)) {
     var cgoID = clientGameObjects.insert({
       clientId: Meteor.user(),
       heists_available: [],
       heist_accepted: null,
       experts_available: [],
-      experts_hired: []
+      experts_hired: [],
+      turn: 0
     });
     Session.set("clientGameObject", cgoID);
   }

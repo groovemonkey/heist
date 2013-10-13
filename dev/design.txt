@@ -1,11 +1,9 @@
 ideas:
 
-  -heroism chance for each location (makes mission harder by having heroic customers/shopowners)
-
   -recon -- each recon attempt is a chance to get busted. (or for "heat" to increase?)
   -safe houses -- a safe house reduces chance that recon will get busted. (reduces "heat"?)
-
   -training for your team (improves their skills in exchange for money)
+  -heroism chance for each location (makes mission harder by having heroic customers/shopowners)
 
 
 
@@ -19,6 +17,7 @@ heist-obstacles     ---->     expert-skills
 alarm systems,
 video cameras,
 computer security,  ---->     hacker
+recon accuracy
 
 laser tripwires     ---->     hacker or acrobat
 
@@ -38,6 +37,8 @@ armed response squad,
 swat team,
 police squad unit   ---->     gunfighting/disguises + charm
 armed guards
+
+recon accuracy      ---->     disguises + charm
 
 
 

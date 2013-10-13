@@ -13,27 +13,70 @@ Meteor.startup(function() {
   // insert experts
   if (Experts.find().count() === 0) {
     for (var i = 5; i >= 0; i--) {
-      names = generate_name();
-      spec = generate_specialization();
-
-      Experts.insert({
-        firstname: names["firstname"],
-        nickname: names["nickname"],
-        lastname: names["lastname"],
-        sex: names["sex"],
-        specialization: spec["title"],
-        skills: spec["skills"], // this is a hash
-
-      });
+      Experts.insert(generate_expert());
     }
   }
-}
+}); // end initialization
 
 
+
+
+// utility functions
 function randomly_select(arr) {
   // "Return a random element from the input array"
   return arr[Math.floor(Math.random() * arr.length)];
 }
+
+function rand(i) {
+  // returns a random number between 0 and i
+  return Math.floor(Math.random() * (i+1));
+}
+
+
+
+
+function generate_expert() {
+  // returns an expert {name: "blah", ... spec: "spec", skills: {blah: 1, shooting: 3, disguise: 5}}
+
+  var specsAndSkills = {
+    hacker:       ["hacking", "recon"],
+    infiltrator:  ["disguise", "charm", "acrobatics"],
+    heavy:        ["gunfighting", "demolition", "brawling"],
+    transporter:  ["transportation"],
+    safecracker:  ["lockpicking"]
+  };
+
+  // BUILD THE HUMAN
+  // TODO: do this through the actual hash above (write randomly_select for hashes)
+  spec = randomly_select(["hacker", "infiltrator", "heavy", "transporter", "safecracker"]);
+  
+  var specialist = {
+    spec: spec,
+    skills: {}
+  };
+
+  for (var i = specsAndSkills[spec].length - 1; i >= 0; i--) {
+    specialist["skills"][specsAndSkills[spec][i]] = (rand(10)+1);
+  }
+
+  // extra skills: (true or false)
+  specialist.skills["blabbing"] = (rand(100) < 10);
+  specialist.skills["is_undercover_cop"] = (rand(100) < 5);
+  specialist.skills["luck"] = (rand(100) < 24);
+
+  // naming
+  var names = generate_name();
+  specialist.firstname = names["firstname"];
+  specialist.nickname = names["nickname"];
+  specialist.lastname = names["lastname"];
+  specialist.sex = names["sex"];
+
+
+  return specialist;
+}
+
+
+
 
 function generate_name() {
   // return a hash: {sex: s, firstname: f, lastname: l, nickname: n}
@@ -63,7 +106,7 @@ function generate_name() {
     "Henderson", "Coleman", "Hayes"
   ];
 
-  randysex = Math.floor(Math.random() * 100);
+  randysex = rand(100);
   // all babies start out female
   sex = "female";
   first = randomly_select(firstnames_f);
