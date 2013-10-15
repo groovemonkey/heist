@@ -48,24 +48,28 @@ function takeTurn(gameObj) {
   
 
 
-  // add new expert (new -- client-side)
+  // add 2 new experts (new -- client-side)
+  // TODO: THIS IS A HUGE PROBLEM AND FREEZES THE BROWSER (+ TAKES 100% CPU)
+
+
+  /// DEBUG ONLY
+  // var c = 0;
+  // while (c < 2) {
+  //   var exp = generate_expert(); // problem is HERE?
+  //   exp["createdTurn"] = gameObj.turn;
+  //   exp["turns_available"] = 3;
+  //   gameObj.experts_available.push(exp);
+  //   c++;
+  // }
+
+  ////    ACTUAL NON-DEBUG CODE
   var exp = generate_expert();
   exp["createdTurn"] = gameObj.turn;
   exp["turns_available"] = 3;
 
+  console.log("about to push a new expert onto gameobject...this is where it all goes bad");
   gameObj.experts_available.push(exp);
-
-
-  // ///add new experts (OLD --server-based method)
-  // allAvailableExperts = Experts.find({});
-  // allAvailableExperts.forEach(function(exp) {
-  //   var rand = Math.floor(Math.random() * 100);
-  //   if (rand < exp.chance_of_creation) {
-  //     exp["createdTurn"] = gameObj.turn;
-  //     gameObj.experts_available.push(exp);
-  //   }
-  // });
-
+  console.log("push successful.");
 
 
   // end turn + save gameObject

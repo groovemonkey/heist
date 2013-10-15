@@ -38,6 +38,24 @@
 
 
 
+  <h2>Experts Available:</h2>
+  <div class="expertlist">
+    {{#each experts_available}}
+      <div class="expert">
+        <span class="expert-spec">{{spec}}</span>
+        <span class="expertname">{{firstname}} "{{nickname}}" {{lastname}}</span>
+        <p>Stats:</p>
+        <ul>
+          <li>Sex: {{sex}}</li>
+          {{#each skills}}
+          <li>{{name}} -- {{level}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    <button type="button" class="btn hireExpert">Hire</button>
+    {{/each}}
+  </div>
+
 
   <button type="button" class="btn takeTurn">Take Turn</button>
 </div> <!-- end #mainpanel div  -->

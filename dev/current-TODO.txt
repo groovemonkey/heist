@@ -1,5 +1,6 @@
 ###
 you were just working on:
+  -experts memory leak
 
 -experts -- not a collection on server, just objects created client-side + stored in clientGameObject
 -choosing a heist
