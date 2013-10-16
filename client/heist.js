@@ -2,12 +2,10 @@
 Heists = new Meteor.Collection("heists");
 Experts = new Meteor.Collection("experts");
 clientGameObjects = new Meteor.Collection("clientGameObjects");
-
 Meteor.subscribe("heists");
 Meteor.subscribe("gameObject");
 
 Session.set("clientGameObject", false);
-
 
 
 function takeTurn(gameObj) {
@@ -21,23 +19,16 @@ function takeTurn(gameObj) {
     }
   }
 
-
-
-
   // remove experts that have expired
-  for (var e = gameObj["experts_available"].length - 1; e >= 0; h--) {
+  for (var e = gameObj["experts_available"].length - 1; e >= 0; e--) {
     var age = gameObj.turn - gameObj["experts_available"][e].createdTurn;
     if (gameObj["experts_available"][e]["turns_available"] < age) {
       gameObj["experts_available"].splice(h,1);
     }
   }
 
-
-
-
   // // add new heists
   allAvailableHeists = Heists.find({});
-
   allAvailableHeists.forEach(function(heist) {
     var rand = Math.floor(Math.random() * 100);
     if (rand < heist.chance) {
@@ -46,40 +37,20 @@ function takeTurn(gameObj) {
     }
   });
   
-
-
   // add 2 new experts (new -- client-side)
-  // TODO: THIS IS A HUGE PROBLEM AND FREEZES THE BROWSER (+ TAKES 100% CPU)
-
-
-  /// DEBUG ONLY
-  // var c = 0;
-  // while (c < 2) {
-  //   var exp = generate_expert(); // problem is HERE?
-  //   exp["createdTurn"] = gameObj.turn;
-  //   exp["turns_available"] = 3;
-  //   gameObj.experts_available.push(exp);
-  //   c++;
-  // }
-
-  ////    ACTUAL NON-DEBUG CODE
   var exp = generate_expert();
   exp["createdTurn"] = gameObj.turn;
   exp["turns_available"] = 3;
-
-  console.log("about to push a new expert onto gameobject...this is where it all goes bad");
   gameObj.experts_available.push(exp);
-  console.log("push successful.");
-
 
   // end turn + save gameObject
   gameObj.turn += 1;
   clientGameObjects.update(gameObj["_id"], gameObj);
+
 }
 
 
 function runHeist(gameObj) {
-  console.log(gameObj);
   if (gameObj.heist_accepted) {
     var heist = gameObj.heist_accepted;
     var experts = gameObj.experts_hired;
