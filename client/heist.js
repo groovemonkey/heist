@@ -37,7 +37,7 @@ function takeTurn(gameObj) {
     }
   });
   
-  // add 2 new experts (new -- client-side)
+  // add 2 new experts
   var exp = generate_expert();
   exp["createdTurn"] = gameObj.turn;
   exp["turns_available"] = 3;

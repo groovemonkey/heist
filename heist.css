@@ -33,6 +33,17 @@ body {
   padding: .5em .8em;
 }
 
+.expert {
+  display: inline-block;
+  width: 12em;
+  border-radius: 5px;
+  border: 1px solid #38A60C;
+  background-color: #6761FF;
+  margin-bottom: 2em;
+  margin-right: 1em;
+  padding: .5em .8em;
+}
+
 button.takeTurn {
   font-size: 2em;
   border-radius: 0;

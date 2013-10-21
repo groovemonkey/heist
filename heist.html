@@ -42,7 +42,8 @@
   <div class="expertlist">
     {{#each experts_available}}
       <div class="expert">
-        <span class="expert-spec">{{spec}}</span>
+        <span class="expert-spec"><strong>{{spec}}:</strong></span>
+        <br>
         <span class="expertname">{{firstname}} "{{nickname}}" {{lastname}}</span>
         <p>Stats:</p>
         <ul>
@@ -51,8 +52,8 @@
           <li>{{name}} -- {{level}}</li>
           {{/each}}
         </ul>
+        <button type="button" class="btn hireExpert">Hire</button>
       </div>
-    <button type="button" class="btn hireExpert">Hire</button>
     {{/each}}
   </div>
 
