@@ -74,7 +74,7 @@ function generate_name() {
   var nicknames = [
     "the Claw", "Penny-Pincher", "Lucky", "the Face", "Sweet-tits", "Biggs", "Hammer", "Froggie",
     "Frosty", "the Baker", "Coalminer", "Assquatch", "Smalls", "Queen Kong", "Short Stack", "Dimmy",
-    "Bearclaw", "Moosefart"
+    "Bearclaw", "Moosefart", "Morgan"
   ];
 
   var lastnames = [
